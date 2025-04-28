@@ -19,9 +19,11 @@
             <li>
                 <span th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></span>
                 <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> <!-- Edit link -->
+                <a th:href="@{/delete/{id}(id=${contact.id})}" style="color:red;">Delete</a> <!-- Delete link -->
             </li>
         </th:block>
     </ul>
+    
     
     
     
