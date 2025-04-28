@@ -85,5 +85,21 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "index"; // Display sorted contacts on homepage
     }
+
+    @GetMapping("/")
+    public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
+        List<Contact> contacts;
+        
+        if (searchQuery.isEmpty()) {
+            contacts = contactRepository.findAll();
+        } else {
+            contacts = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(searchQuery, searchQuery, searchQuery);
+        }
+        
+        model.addAttribute("contacts", contacts);
+        model.addAttribute("searchQuery", searchQuery);
+        return "index"; // Display search results
+    }
+
     
 }
