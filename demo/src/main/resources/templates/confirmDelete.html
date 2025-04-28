@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Deletion</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete the following contact?</h1>
+    <p>Name: <span th:text="${contact.name}"></span></p>
+    <p>Phone: <span th:text="${contact.phone}"></span></p>
+    <p>Email: <span th:text="${contact.email}"></span></p>
+
+    <form action="/delete/{id}" method="get">
+        <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="/">No, Go Back</a> <!-- Link to return to the homepage -->
+</body>
+</html>
