@@ -1,7 +1,8 @@
-package com.example.controller;
+package com.example.demo.controller;
 
-import com.example.model.Contact;
-import com.example.repository.ContactRepository;
+import com.example.demo.model.Contact;
+import com.example.demo.repository.ContactRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
