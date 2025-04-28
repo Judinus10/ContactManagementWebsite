@@ -10,9 +10,10 @@
     <p>Phone: <span th:text="${contact.phone}"></span></p>
     <p>Email: <span th:text="${contact.email}"></span></p>
 
-    <form action="/delete/{id}" method="get">
+    <form th:action="@{/delete/{id}(id=${contact.id})}" method="get">
         <button type="submit">Yes, Delete</button>
     </form>
+    
     <a href="/">No, Go Back</a> <!-- Link to return to the homepage -->
 </body>
 </html>
