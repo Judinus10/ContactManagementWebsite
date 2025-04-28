@@ -29,11 +29,30 @@ public class ContactController {
     }
 
 
-    @PostMapping("/addContact")
-    public String addContact(@ModelAttribute Contact contact) {
-        contactRepository.save(contact); 
-        return "redirect:/";
+    // @PostMapping("/addContact")
+    // public String addContact(@ModelAttribute Contact contact) {
+    //     contactRepository.save(contact); 
+    //     return "redirect:/";
+    // }
+
+    @GetMapping("/addContact")
+    public String showAddContactForm() {
+        return "addContact"; // Return the addContact.html page
     }
+
+
+    @PostMapping("/addContact")
+    public String addContact(@RequestParam String name, @RequestParam String phone, @RequestParam String email) {
+        Contact contact = new Contact();
+        contact.setName(name);
+        contact.setPhone(phone);
+        contact.setEmail(email);
+
+        contactRepository.save(contact); // Save the new contact to the database
+
+        return "redirect:/"; // Redirect back to the home page after adding the contact
+    }
+
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
