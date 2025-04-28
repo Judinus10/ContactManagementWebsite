@@ -4,7 +4,7 @@ import com.example.demo.model.Contact;
 import com.example.demo.repository.ContactRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,25 +67,23 @@ public class ContactController {
         return "confirmDelete"; // The view where the user will confirm deletion
     }
 
-    @GetMapping("/")
-public String showContacts(@RequestParam(value = "sortBy", defaultValue = "name") String sortBy, Model model) {
-    List<Contact> contacts;
-    
-    switch (sortBy) {
-        case "phone":
-            contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("phone")));
-            break;
-        case "email":
-            contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("email")));
-            break;
-        default:
-            contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("name")));
+    @GetMapping("/contacts")
+    public String showContacts(@RequestParam(value = "sortBy", defaultValue = "name") String sortBy, Model model) {
+        List<Contact> contacts;
+        
+        switch (sortBy) {
+            case "phone":
+                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("phone")));
+                break;
+            case "email":
+                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("email")));
+                break;
+            default:
+                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("name")));
+        }
+        
+        model.addAttribute("contacts", contacts);
+        return "index"; // Display sorted contacts on homepage
     }
-    
-    model.addAttribute("contacts", contacts);
-    return "index"; // Display sorted contacts on homepage
-}
-
-
     
 }
