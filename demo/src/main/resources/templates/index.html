@@ -13,6 +13,13 @@
         <input type="email" name="email" placeholder="Email"><br><br>
         <button type="submit">Save Contact</button>
     </form>
+
+    <ul>
+        <th:block th:each="contact : ${contacts}">
+            <li th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></li>
+        </th:block>
+    </ul>
+    
     
 
     

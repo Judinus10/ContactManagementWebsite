@@ -24,9 +24,12 @@ public class HomeController {
         return "index";
     }
 
+
     @PostMapping("/addContact")
     public String addContact(@ModelAttribute Contact contact) {
         contactRepository.save(contact); 
         return "redirect:/";
     }
+
+    
 }
