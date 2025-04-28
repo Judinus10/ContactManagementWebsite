@@ -86,7 +86,7 @@ public class ContactController {
         return "index"; // Display sorted contacts on homepage
     }
 
-    @GetMapping("/")
+    @GetMapping("/search")
     public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
         List<Contact> contacts;
         
