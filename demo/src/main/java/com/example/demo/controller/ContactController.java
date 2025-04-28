@@ -50,6 +50,12 @@ public class ContactController {
         return "redirect:/"; // Redirect back to home page after update
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteContact(@PathVariable Long id) {
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+        contactRepository.delete(contact);
+        return "redirect:/"; // Redirect to home page after deletion
+    }
 
     
 }
