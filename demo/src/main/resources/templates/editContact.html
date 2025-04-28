@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Contact</title>
+</head>
+<body>
+    <h1>Edit Contact</h1>
+    <form action="/edit/{{contact.id}}" method="post">
+        <input type="text" name="name" value="{{contact.name}}" placeholder="Name"><br><br>
+        <input type="text" name="phone" value="{{contact.phone}}" placeholder="Phone"><br><br>
+        <input type="email" name="email" value="{{contact.email}}" placeholder="Email"><br><br>
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
