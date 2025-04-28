@@ -57,5 +57,12 @@ public class ContactController {
         return "redirect:/"; // Redirect to home page after deletion
     }
 
+    @GetMapping("/confirmDelete/{id}")
+    public String confirmDelete(@PathVariable Long id, Model model) {
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+        model.addAttribute("contact", contact);
+        return "confirmDelete"; // The view where the user will confirm deletion
+    }
+
     
 }
