@@ -12,7 +12,7 @@ public class Contact {
     private Long id;
 
     private String name;
-    private String phone;
+    private int phone;
     private String email;
 
     
@@ -33,11 +33,11 @@ public class Contact {
         this.name = name;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
