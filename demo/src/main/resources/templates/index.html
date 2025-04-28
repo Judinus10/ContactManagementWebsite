@@ -16,9 +16,13 @@
 
     <ul>
         <th:block th:each="contact : ${contacts}">
-            <li th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></li>
+            <li>
+                <span th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></span>
+                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> <!-- Edit link -->
+            </li>
         </th:block>
     </ul>
+    
     
     
 
