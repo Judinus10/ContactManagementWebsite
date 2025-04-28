@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class ContactController {
 
     @Autowired
     private ContactRepository contactRepository;
