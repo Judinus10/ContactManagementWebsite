@@ -33,6 +33,21 @@
         </th:block>
     </ul>
     
+    <form action="/" method="get">
+        <input type="text" name="searchQuery" placeholder="Search..." value="{{searchQuery}}" />
+        <button type="submit">Search</button>
+    </form>
+    
+    <ul>
+        <th:block th:each="contact : ${contacts}">
+            <li>
+                <span th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></span>
+                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a>
+                <a th:href="@{/confirmDelete/{id}(id=${contact.id})}" style="color:red;">Delete</a>
+            </li>
+        </th:block>
+    </ul>
+    
     
     
     
