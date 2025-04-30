@@ -6,12 +6,6 @@
 </head>
 <body>
     <h1>Edit Contact</h1>
-    <!-- <form action="/edit/{{contact.id}}" method="post">
-        <input type="text" name="name" value="${contact.name}" placeholder="Name"><br><br>
-        <input type="text" name="phone" value="${contact.phone}" placeholder="Phone"><br><br>
-        <input type="email" name="email" value="${contact.email}" placeholder="Email"><br><br>
-        <button type="submit">Save Changes</button>
-    </form> -->
     <form action="/updateContact" method="post">
         <input type="hidden" name="id" th:value="${contact.id}"/>
     

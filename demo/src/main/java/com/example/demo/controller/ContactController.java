@@ -28,13 +28,6 @@ public class ContactController {
         return "index";
     }
 
-
-    // @PostMapping("/addContact")
-    // public String addContact(@ModelAttribute Contact contact) {
-    //     contactRepository.save(contact); 
-    //     return "redirect:/";
-    // }
-
     @GetMapping("/addContact")
     public String showAddContactForm() {
         return "addContact"; // Return the addContact.html page
@@ -60,6 +53,23 @@ public class ContactController {
         model.addAttribute("contact", contact);
         return "editContact"; // The view where the edit form is shown
     }
+
+    @PostMapping("/updateContact")
+    public String updateContact(@RequestParam Long id,
+                                @RequestParam String name,
+                                @RequestParam String phone,
+                                @RequestParam String email) {
+        Contact contact = contactRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid contact ID"));
+
+        contact.setName(name);
+        contact.setPhone(phone);
+        contact.setEmail(email);
+        contactRepository.save(contact);
+
+        return "redirect:/"; // redirect to homepage or contact list
+    }
+
 
     @PostMapping("/edit/{id}")
     public String updateContact(@PathVariable Long id, @ModelAttribute Contact contact) {
@@ -104,6 +114,7 @@ public class ContactController {
         model.addAttribute("contacts", contacts);
         return "index"; // Display sorted contacts on homepage
     }
+    
 
     @GetMapping("/search")
     public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
