@@ -70,17 +70,6 @@ public class ContactController {
         return "redirect:/"; // redirect to homepage or contact list
     }
 
-
-    @PostMapping("/edit/{id}")
-    public String updateContact(@PathVariable Long id, @ModelAttribute Contact contact) {
-        Contact existingContact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
-        existingContact.setName(contact.getName());
-        existingContact.setPhone(contact.getPhone());
-        existingContact.setEmail(contact.getEmail());
-        contactRepository.save(existingContact);
-        return "redirect:/"; // Redirect back to home page after update
-    }
-
     @GetMapping("/delete/{id}")
     public String deleteContact(@PathVariable Long id) {
         Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
