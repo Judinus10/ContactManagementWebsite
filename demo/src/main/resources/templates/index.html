@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
     <title>Hello Contact App</title>
 </head>
+
 <body>
     <h1>Contact Management App</h1>
-<h2>Contact List</h2>
+    <h2>Contact List</h2>
 
     <form action="/sort" method="get">
         <label for="sortBy">Sort By:</label>
@@ -25,26 +27,26 @@
         <button type="submit">Search</button>
     </form>
     <br>
-    
 
 
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="contact : ${contacts}">
-        <td th:text="${contact.name}"></td>
-        <td th:text="${contact.phone}"></td>
-        <td th:text="${contact.email}"></td>
-        <td>
-            <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> |
-            <a th:href="@{/confirmDelete/{id}(id=${contact.id})}" style="color:red;">Delete</a>
-        </td>
-    </tr>
-</table>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.name}"></td>
+            <td th:text="${contact.phone}"></td>
+            <td th:text="${contact.email}"></td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> |
+                <a th:href="@{/confirmDelete/{id}(id=${contact.id})}" style="color:red;">Delete</a>
+            </td>
+        </tr>
+    </table>
 
 
     <!-- <ul>
@@ -56,8 +58,9 @@
             </li>
         </th:block>
     </ul> -->
-    
+
 
     <script src="/js/script.js"></script>
 </body>
+
 </html>
