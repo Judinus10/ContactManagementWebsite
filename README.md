@@ -1,6 +1,4 @@
-Here's a sample **README.md** for your contact management application:
 
----
 
 # Contact Management App
 
