@@ -96,24 +96,25 @@ public class ContactController {
         return "confirmDelete"; // The view where the user will confirm deletion
     }
 
-    @GetMapping("/contacts")
-    public String showContacts(@RequestParam(value = "sortBy", defaultValue = "name") String sortBy, Model model) {
-        List<Contact> contacts;
+    // @GetMapping("/contacts")
+    // public String showContacts(@RequestParam(value = "sortBy", defaultValue = "name") String sortBy, Model model) {
+    //     List<Contact> contacts;
         
-        switch (sortBy) {
-            case "phone":
-                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("phone")));
-                break;
-            case "email":
-                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("email")));
-                break;
-            default:
-                contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("name")));
-        }
-        
-        model.addAttribute("contacts", contacts);
-        return "index"; // Display sorted contacts on homepage
-    }
+    //     switch (sortBy) {
+    //         case "phone":
+    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("phone")));
+    //             break;
+    //         case "email":
+    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("email")));
+    //             break;
+    //         default:
+    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("name")));
+    //     }
+    //     System.out.println("SortBy: " + sortBy + ", Contacts: " + contacts.size());
+
+    //     model.addAttribute("contacts", contacts);
+    //     return "index"; // Display sorted contacts on homepage
+    // }
     
 
     @GetMapping("/search")

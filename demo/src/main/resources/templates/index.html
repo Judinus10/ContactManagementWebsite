@@ -8,14 +8,14 @@
 <body>
     <h1>Contact Management App</h1>
 
-    <form action="/" method="get">
+    <!-- <form action="/" method="get">
         <label for="sortBy">Sort By:</label>
         <select name="sortBy" id="sortBy" onchange="this.form.submit()">
-            <option value="name" th:selected="${param.sortBy == 'name'}">Name</option>
-            <option value="phone" th:selected="${param.sortBy == 'phone'}">Phone</option>
-            <option value="email" th:selected="${param.sortBy == 'email'}">Email</option>
+            <option value="name" th:selected="${sortBy == 'name'}">Name</option>
+            <option value="phone" th:selected="${sortBy == 'phone'}">Phone</option>
+            <option value="email" th:selected="${sortBy == 'email'}">Email</option>
         </select>
-    </form>
+    </form> -->
 
     <ul>
         <th:block th:each="contact : ${contacts}">
