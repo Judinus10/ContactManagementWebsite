@@ -89,33 +89,14 @@ public class ContactController {
     }
 
 
-    @GetMapping("/confirmDelete/{id}")
-    public String confirmDelete(@PathVariable Long id, Model model) {
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
-        model.addAttribute("contact", contact);
-        return "confirmDelete"; // The view where the user will confirm deletion
-    }
-
-    // @GetMapping("/contacts")
-    // public String showContacts(@RequestParam(value = "sortBy", defaultValue = "name") String sortBy, Model model) {
-    //     List<Contact> contacts;
-        
-    //     switch (sortBy) {
-    //         case "phone":
-    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("phone")));
-    //             break;
-    //         case "email":
-    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("email")));
-    //             break;
-    //         default:
-    //             contacts = contactRepository.findAll(Sort.by(Sort.Order.asc("name")));
-    //     }
-    //     System.out.println("SortBy: " + sortBy + ", Contacts: " + contacts.size());
-
-    //     model.addAttribute("contacts", contacts);
-    //     return "index"; // Display sorted contacts on homepage
+    // @GetMapping("/confirmDelete/{id}")
+    // public String confirmDelete(@PathVariable Long id, Model model) {
+    //     Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+    //     model.addAttribute("contact", contact);
+    //     return "confirmDelete"; // The view where the user will confirm deletion
     // }
-    @GetMapping("/contact")
+
+    @GetMapping("/sort")
 public String viewHomePage(@RequestParam(required = false, defaultValue = "name") String sortField, Model model) {
     List<Contact> contactList = contactRepository.findAll(Sort.by(sortField).ascending());
     model.addAttribute("contacts", contactList);
