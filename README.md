@@ -40,7 +40,7 @@ Clone the project from GitHub:
 
 ```bash
 git clone https://github.com/Judinus10/ContactManagementApp.git
-cd contact-management-app
+cd ContactManagementApp
 ```
 
 ### 2. **Install Dependencies**
