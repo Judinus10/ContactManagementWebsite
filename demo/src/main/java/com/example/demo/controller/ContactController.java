@@ -105,20 +105,29 @@ public String viewHomePage(@RequestParam(required = false, defaultValue = "name"
 }
 
 
+    // @GetMapping("/search")
+    // public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
+    //     List<Contact> contacts;
+        
+    //     if (searchQuery.isEmpty()) {
+    //         contacts = contactRepository.findAll();
+    //     } else {
+    //         contacts = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(searchQuery, searchQuery, searchQuery);
+    //     }
+        
+    //     model.addAttribute("contacts", contacts);
+    //     model.addAttribute("searchQuery", searchQuery);
+    //     return "index"; // Display search results
+    // }
+
     @GetMapping("/search")
-    public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
-        List<Contact> contacts;
-        
-        if (searchQuery.isEmpty()) {
-            contacts = contactRepository.findAll();
-        } else {
-            contacts = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(searchQuery, searchQuery, searchQuery);
-        }
-        
-        model.addAttribute("contacts", contacts);
-        model.addAttribute("searchQuery", searchQuery);
-        return "index"; // Display search results
-    }
+public String searchContacts(@RequestParam("keyword") String keyword, Model model) {
+    List<Contact> results = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(
+        keyword, keyword, keyword);
+    model.addAttribute("contacts", results);
+    return "index";
+}
+
 
     
 }
