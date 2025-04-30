@@ -7,32 +7,54 @@
 </head>
 <body>
     <h1>Contact Management App</h1>
+<h2>Contact List</h2>
 
-    <!-- <form action="/" method="get">
+    <form action="/" method="get">
         <label for="sortBy">Sort By:</label>
         <select name="sortBy" id="sortBy" onchange="this.form.submit()">
             <option value="name" th:selected="${sortBy == 'name'}">Name</option>
             <option value="phone" th:selected="${sortBy == 'phone'}">Phone</option>
             <option value="email" th:selected="${sortBy == 'email'}">Email</option>
         </select>
-    </form> -->
+    </form>
 
-    <ul>
-        <th:block th:each="contact : ${contacts}">
-            <li>
-                <span th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></span>
-                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> <!-- Edit link -->
-                <a th:href="@{/confirmDelete/{id}(id=${contact.id})}" style="color:red;">Delete</a> <!-- Delete confirmation link -->
-            </li>
-        </th:block>
-    </ul>
-    
+    <a href="/addContact">Add New Contact</a> <!-- Link to the Add Contact form -->
+
     <form action="/" method="get">
         <input type="text" name="searchQuery" placeholder="Search..." />
         <button type="submit">Search</button>
     </form>
+
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="contact : ${contacts}">
+        <td th:text="${contact.name}"></td>
+        <td th:text="${contact.phone}"></td>
+        <td th:text="${contact.email}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> |
+            <a th:href="@{/delete/{id}(id=${contact.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+
+    <!-- <ul>
+        <th:block th:each="contact : ${contacts}">
+            <li>
+                <span th:text="${contact.name} + ' - ' + ${contact.phone} + ' - ' + ${contact.email}"></span>
+                <a th:href="@{/edit/{id}(id=${contact.id})}">Edit</a> 
+                <a th:href="@{/confirmDelete/{id}(id=${contact.id})}" style="color:red;">Delete</a>
+            </li>
+        </th:block>
+    </ul> -->
     
-    <a href="/addContact">Add New Contact</a> <!-- Link to the Add Contact form -->
 
     <script src="/js/script.js"></script>
 </body>

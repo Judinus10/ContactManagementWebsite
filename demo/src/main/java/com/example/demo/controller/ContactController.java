@@ -115,7 +115,14 @@ public class ContactController {
     //     model.addAttribute("contacts", contacts);
     //     return "index"; // Display sorted contacts on homepage
     // }
-    
+    @GetMapping("/contact")
+public String viewHomePage(@RequestParam(required = false, defaultValue = "name") String sortField, Model model) {
+    List<Contact> contactList = contactRepository.findAll(Sort.by(sortField).ascending());
+    model.addAttribute("contacts", contactList);
+    model.addAttribute("sortField", sortField);
+    return "index"; // your main contact list page
+}
+
 
     @GetMapping("/search")
     public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
