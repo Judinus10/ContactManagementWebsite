@@ -89,12 +89,12 @@ public class ContactController {
     }
 
 
-    // @GetMapping("/confirmDelete/{id}")
-    // public String confirmDelete(@PathVariable Long id, Model model) {
-    //     Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
-    //     model.addAttribute("contact", contact);
-    //     return "confirmDelete"; // The view where the user will confirm deletion
-    // }
+    @GetMapping("/confirmDelete/{id}")
+    public String confirmDelete(@PathVariable Long id, Model model) {
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+        model.addAttribute("contact", contact);
+        return "confirmDelete"; // The view where the user will confirm deletion
+    }
 
     @GetMapping("/sort")
 public String viewHomePage(@RequestParam(required = false, defaultValue = "name") String sortField, Model model) {
@@ -103,22 +103,6 @@ public String viewHomePage(@RequestParam(required = false, defaultValue = "name"
     model.addAttribute("sortField", sortField);
     return "index"; // your main contact list page
 }
-
-
-    // @GetMapping("/search")
-    // public String searchContacts(@RequestParam(value = "searchQuery", defaultValue = "") String searchQuery, Model model) {
-    //     List<Contact> contacts;
-        
-    //     if (searchQuery.isEmpty()) {
-    //         contacts = contactRepository.findAll();
-    //     } else {
-    //         contacts = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(searchQuery, searchQuery, searchQuery);
-    //     }
-        
-    //     model.addAttribute("contacts", contacts);
-    //     model.addAttribute("searchQuery", searchQuery);
-    //     return "index"; // Display search results
-    // }
 
     @GetMapping("/search")
 public String searchContacts(@RequestParam("keyword") String keyword, Model model) {
