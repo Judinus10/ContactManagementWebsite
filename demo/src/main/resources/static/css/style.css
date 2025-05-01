@@ -138,7 +138,6 @@ a[style*="color:red;"] {
 }
 
 /*........................................................*/
-
 /* Add Contact Page Container */
 .add-contact-container {
     max-width: 500px;
@@ -173,7 +172,7 @@ a[style*="color:red;"] {
 /* Submit Button */
 .add-contact-container button[type="submit"] {
     padding: 12px;
-    background-color: #3498db;
+    background-color: #34db50;
     color: white;
     border: none;
     border-radius: 6px;
@@ -183,7 +182,7 @@ a[style*="color:red;"] {
 }
 
 .add-contact-container button[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #29b94d;
 }
 
 /* Go Back Link */
