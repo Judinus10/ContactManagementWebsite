@@ -10,27 +10,30 @@
 <body>
     <h1>Contact Management App</h1>
     
-    <div class="left-title">
-        <h2>Contact List</h2>
-    </div>
-
     <div class="actions">
-        <form action="/sort" method="get">
-            <label for="sortBy">Sort By:</label>
-            <select name="sortBy" id="sortBy" onchange="this.form.submit()">
-                <option value="name" th:selected="${sortBy == 'name'}">Name</option>
-                <option value="phone" th:selected="${sortBy == 'phone'}">Phone</option>
-                <option value="email" th:selected="${sortBy == 'email'}">Email</option>
-            </select>
-        </form>
-
-        <form action="/search" method="get">
-            <input type="text" name="keyword" placeholder="Search Here.." required>
-            <button type="submit">Search</button>
-        </form>
-
-        <a href="/addContact">Add New Contact</a>
+        <div class="contact-title">
+            <h2>Contact List</h2>
+        </div>
+    
+        <div class="right-actions">
+            <form action="/sort" method="get">
+                <label for="sortBy">Sort By:</label>
+                <select name="sortBy" id="sortBy" onchange="this.form.submit()">
+                    <option value="name" th:selected="${sortBy == 'name'}">Name</option>
+                    <option value="phone" th:selected="${sortBy == 'phone'}">Phone</option>
+                    <option value="email" th:selected="${sortBy == 'email'}">Email</option>
+                </select>
+            </form>
+    
+            <form action="/search" method="get">
+                <input type="text" name="keyword" placeholder="Search Here.." required>
+                <button type="submit">Search</button>
+            </form>
+    
+            <a href="/addContact">Add New Contact</a>
+        </div>
     </div>
+    
 
     <table border="1">
         <tr>

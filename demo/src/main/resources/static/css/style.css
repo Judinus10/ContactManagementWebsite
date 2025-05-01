@@ -17,7 +17,8 @@ h2 {
     color: #34495e;
 }
 
-.top-bar {
+/* Action row: sort, search, add contact */
+.actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,45 +26,57 @@ h2 {
     margin-bottom: 20px;
 }
 
-.left-title h2 {
+/* Left title stays left */
+.contact-title h2 {
     margin: 0;
     color: #34495e;
 }
 
-/* Action row: sort, search, add contact */
-.actions {
+/* Right side controls */
+.right-actions {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 15px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
-.actions form {
+.right-actions form {
     display: flex;
     align-items: center;
     gap: 5px;
     margin: 0;
 }
 
-.actions select,
-.actions input[type="text"],
-.actions button {
+.right-actions select,
+.right-actions input[type="text"],
+.right-actions button {
     padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.actions button {
+.right-actions button {
     background-color: #3498db;
     color: white;
     cursor: pointer;
 }
 
-.actions button:hover {
+.right-actions button:hover {
     background-color: #2980b9;
 }
+
+.right-actions a[href="/addContact"] {
+    padding: 6px 12px;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.right-actions a[href="/addContact"]:hover {
+    background-color: #27ae60;
+}
+
 
 /* Add contact button */
 .actions a[href="/addContact"] {
