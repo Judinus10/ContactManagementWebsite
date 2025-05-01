@@ -1,10 +1,13 @@
 
 
-# Contact Management App
+# Contact Management Website
 
 This is a simple **Contact Management Application** built using **Spring Boot** for the backend and **Thymeleaf** for templating. The app allows users to add, edit, delete, search, and sort contacts. It uses a **database** (H2) for storing contact information with **persistent storage**.
 
 ---
+
+![Screenshot 2025-05-01 153452](https://github.com/user-attachments/assets/a23ffe90-dc55-4ebd-b99f-01dc1f396698)
+
 
 ## Features
 
