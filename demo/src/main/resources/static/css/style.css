@@ -17,49 +17,65 @@ h2 {
     color: #34495e;
 }
 
-/* Form styles */
-form {
-    margin: 10px 0;
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
+.left-title h2 {
+    margin: 0;
+    color: #34495e;
+}
+
+/* Action row: sort, search, add contact */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.actions form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+}
+
+.actions select,
+.actions input[type="text"],
+.actions button {
     padding: 6px;
-    width: 200px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-select {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 6px 12px;
+.actions button {
     background-color: #3498db;
     color: white;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
+.actions button:hover {
     background-color: #2980b9;
 }
 
-/* Add new contact link */
-a[href="/addContact"] {
-    display: inline-block;
-    margin: 10px 0;
+/* Add contact button */
+.actions a[href="/addContact"] {
+    padding: 6px 12px;
     background-color: #2ecc71;
     color: white;
-    padding: 8px 12px;
     text-decoration: none;
     border-radius: 4px;
+    white-space: nowrap;
 }
 
-a[href="/addContact"]:hover {
+.actions a[href="/addContact"]:hover {
     background-color: #27ae60;
 }
 
@@ -71,7 +87,8 @@ table {
     background-color: white;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -81,6 +98,7 @@ table th {
     background-color: #ecf0f1;
 }
 
+/* Action links inside the table */
 a {
     color: #2980b9;
     text-decoration: none;
