@@ -137,6 +137,69 @@ a[style*="color:red;"] {
     font-weight: bold;
 }
 
+/*........................................................*/
+
+/* Add Contact Page Container */
+.add-contact-container {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styling */
+.add-contact-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-contact-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.add-contact-container input[type="text"],
+.add-contact-container input[type="email"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+.add-contact-container button[type="submit"] {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-contact-container button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Go Back Link */
+.add-contact-container a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.add-contact-container a:hover {
+    text-decoration: underline;
+}
+
+
 @media (max-width: 768px) {
     .actions {
         flex-direction: row;
