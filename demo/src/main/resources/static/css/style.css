@@ -6,6 +6,16 @@ body {
     color: #333;
 }
 
+body {
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+
 /* Header styles */
 h1 {
     color: #2c3e50;
@@ -125,4 +135,46 @@ a:hover {
 a[style*="color:red;"] {
     color: red;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .actions {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .right-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        width: auto;
+    }
+
+    .right-actions form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: nowrap;
+    }
+
+    .right-actions form input[type="text"] {
+        width: 140px;
+    }
+
+    .right-actions form button {
+        width: auto;
+    }
+
+    .right-actions select {
+        width: 200px;
+    }
+
+    .right-actions a[href="/addContact"] {
+        width: 200px;
+        text-align: center;
+    }
 }
