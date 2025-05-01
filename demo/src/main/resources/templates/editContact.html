@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Contact</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Edit Contact</h1>
-    <form action="/updateContact" method="post">
-        <input type="hidden" name="id" th:value="${contact.id}"/>
-    
-        <label>Name:</label>
-        <input type="text" name="name" th:value="${contact.name}" required><br><br>
-    
-        <label>Phone:</label>
-        <input type="text" name="phone" th:value="${contact.phone}" required><br><br>
-    
-        <label>Email:</label>
-        <input type="email" name="email" th:value="${contact.email}" required><br><br>
-    
-        <button type="submit">Update Contact</button>
-    </form>
-    
+    <div class="edit-contact-container">
+        <h1>Edit Contact</h1>
+        <form action="/updateContact" method="post">
+            <input type="hidden" name="id" th:value="${contact.id}"/>
+        
+            <label>Name:</label>
+            <input type="text" name="name" th:value="${contact.name}" required>
+        
+            <label>Phone:</label>
+            <input type="text" name="phone" th:value="${contact.phone}" required>
+        
+            <label>Email:</label>
+            <input type="email" name="email" th:value="${contact.email}" required>
+        
+            <button type="submit">Update Contact</button>
+        </form>
+    </div>
 </body>
 </html>

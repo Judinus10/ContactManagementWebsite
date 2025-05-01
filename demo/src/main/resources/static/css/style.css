@@ -198,6 +198,74 @@ a[style*="color:red;"] {
     text-decoration: underline;
 }
 
+/*........................................................*/
+
+/* Edit Contact Page Container */
+.edit-contact-container {
+    max-width: 500px;
+    margin: 60px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Page Header */
+.edit-contact-container h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.edit-contact-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-contact-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.edit-contact-container input[type="text"],
+.edit-contact-container input[type="email"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+.edit-contact-container button[type="submit"] {
+    padding: 12px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-contact-container button[type="submit"]:hover {
+    background-color: #d68910;
+}
+
+/* Optional background reuse */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-image: url('/img/contactBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
+
 
 @media (max-width: 768px) {
     .actions {
