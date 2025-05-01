@@ -104,10 +104,11 @@ h2 {
 
 /* Table styling */
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px auto;
     background-color: white;
+    
 }
 
 table th,
