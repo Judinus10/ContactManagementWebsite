@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Contact</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Add New Contact</h1>
-    
-    <form action="/addContact" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <div class="container">
+        <h1>Add New Contact</h1>
         
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" required><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <form action="/addContact" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <button type="submit">Add Contact</button>
-    </form>
+            <button type="submit">Add Contact</button>
+        </form>
 
-    <br>
-    <a href="/">Go Back to Contacts List</a> <!-- Link to return to the home page -->
+        <a href="/">Go Back to Contacts List</a>
+    </div>
 </body>
 </html>
