@@ -264,7 +264,40 @@ a[style*="color:red;"] {
     background-color: #d68910;
 }
 
-/* Optional background reuse */
+.back-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-link a:hover {
+    color: #1c5980;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    .edit-contact-container {
+        padding: 20px;
+        margin: 30px 10px;
+    }
+
+    .edit-contact-container h1 {
+        font-size: 24px;
+    }
+
+    .edit-contact-container input,
+    .edit-contact-container button {
+        font-size: 14px;
+    }
+}
+
+/* Optional background reuse
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -274,7 +307,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #333;
-}
+} */
 
 
 @media (max-width: 768px) {
