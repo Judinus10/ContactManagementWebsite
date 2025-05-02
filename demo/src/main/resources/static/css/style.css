@@ -138,6 +138,10 @@ a[style*="color:red;"] {
     font-weight: bold;
 }
 
+.contact-table {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
 /* Toast message */
 
 .toast {
