@@ -1,3 +1,9 @@
+//  Smooth transition for the entire page load
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
+
 // console.log("Script Loaded!");
 //     // Function to show the toast message
 //     function showToast(message) {
