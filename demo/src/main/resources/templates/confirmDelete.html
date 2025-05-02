@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <div id="toast" class="toast"></div>
+
     <div class="confirm-delete-container">
         <h1>Are you sure you want to delete the following contact?</h1>
         <p>Name: <span th:text="${contact.name}"></span></p>
@@ -18,6 +20,7 @@
 
         <a href="/">No, Go Back</a>
     </div>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
