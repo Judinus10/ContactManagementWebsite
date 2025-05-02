@@ -122,6 +122,20 @@ table th {
     background-color: #ecf0f1;
 }
 
+.contact-table {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.contact-table tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-table tr:hover {
+    background-color: #c6c96b;
+    transform: scale(1.01);
+}
+
+
 /* Action links inside the table */
 a {
     color: #2980b9;
@@ -138,9 +152,7 @@ a[style*="color:red;"] {
     font-weight: bold;
 }
 
-.contact-table {
-    animation: fadeIn 0.8s ease-in-out;
-}
+
 
 /* Toast message */
 
