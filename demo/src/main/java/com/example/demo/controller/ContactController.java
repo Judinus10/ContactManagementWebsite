@@ -20,6 +20,24 @@ public class ContactController {
     @Autowired
     private ContactRepository contactRepository;
 
+    // Display the login form
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";  // Returns the login.html view
+    }
+
+    // Handle the login submission
+    @PostMapping("/login")
+    public String processLogin(String username, String password, Model model) {
+        // Simple validation (for demo purposes)
+        if ("user".equals(username) && "password".equals(password)) {
+            return "redirect:/home";  // Redirect to home page if login is successful
+        } else {
+            model.addAttribute("error", "Invalid username or password!");
+            return "login";  // Show the login page again with an error message
+        }
+    }
+
     @GetMapping("/")
     public String home(Model model) {
         List<Contact> contacts = contactRepository.findAll();
