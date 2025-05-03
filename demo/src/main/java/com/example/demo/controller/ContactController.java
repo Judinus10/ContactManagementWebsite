@@ -31,7 +31,7 @@ public class ContactController {
     public String processLogin(String username, String password, Model model) {
         // Simple validation (for demo purposes)
         if ("user".equals(username) && "password".equals(password)) {
-            return "redirect:/home";  // Redirect to home page if login is successful
+            return "redirect:/index";  // Redirect to home page if login is successful
         } else {
             model.addAttribute("error", "Invalid username or password!");
             return "login";  // Show the login page again with an error message
