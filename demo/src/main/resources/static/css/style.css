@@ -22,67 +22,100 @@ body.loaded {
 }
 
 /* login page */
-body {
+/* General body styling */
+/* body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-}
+} */
 
+/* Login Container */
 .login-container {
-    width: 300px;
-    margin: 100px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
 
-h2 {
+/* Header */
+.login-container h1 {
     text-align: center;
+    color: #2c3e50;
     margin-bottom: 20px;
 }
 
-.input-group {
-    margin-bottom: 15px;
+/* Form Styling */
+.login-container form {
+    display: flex;
+    flex-direction: column;
 }
 
-.input-group label {
-    display: block;
-    font-weight: bold;
+/* Label Styling */
+.login-container label {
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
-.input-group input {
+/* Input Fields */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
 }
 
-.submit-btn {
-    text-align: center;
+/* Focus effect */
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+/* Submit Button */
+.login-container button[type="submit"] {
+    padding: 12px;
+    background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Hover effect for Submit button */
+.login-container button[type="submit"]:hover {
+    background-color: #2980b9;
 }
 
-.error-message {
-    color: red;
-    font-size: 14px;
+/* Forgot Password Link */
+.login-container .forgot-password {
     text-align: center;
+    margin-top: 15px;
 }
+
+.login-container .forgot-password a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.login-container .forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
 
  /* Index.html page */
 
@@ -534,7 +567,21 @@ a[style*="color:red;"] {
     }
 }
 
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        margin: 30px 10px;
+    }
 
+    .login-container h1 {
+        font-size: 24px;
+    }
+
+    .login-container input,
+    .login-container button {
+        font-size: 14px;
+    }
+}
 
 @media (max-width: 768px) {
     .actions {
