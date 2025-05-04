@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Contact;
 import com.example.demo.repository.ContactRepository;
+import com.example.demo.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ public class ContactController {
 
     @Autowired
     private ContactRepository contactRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     // Display the login form
     @GetMapping("/login")
