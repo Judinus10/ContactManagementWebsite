@@ -1,6 +1,6 @@
 /* General body styling */
-
 body {
+    font-family: Arial, sans-serif;
     background-image: url('/img/contactBackground.jpg');
     background-size: cover;
     background-position: center;
@@ -8,6 +8,7 @@ body {
     background-attachment: fixed;
     font-family: Arial, sans-serif;
     opacity: 0;
+    margin: 20px;
     transition: opacity 0.8s ease-in-out;
 }
 
@@ -15,68 +16,62 @@ body.loaded {
     opacity: 1;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 /* login page */
-
-/* Login Container */
+/* ===== Login Container Styling ===== */
 .login-container {
-    background-color: rgb(60, 59, 59);
-    padding: 40px;
-    border-radius: 10px;
+    width: 350px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    position: relative; /* or absolute/fixed */
-    z-index: 999;
 }
 
-/* Header */
-.login-container h1 {
+/* ===== Header ===== */
+.login-container h2 {
     text-align: center;
-    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 26px;
+    color: #333;
+}
+
+/* ===== Input Group Styling ===== */
+.input-group {
     margin-bottom: 20px;
 }
 
-/* Form Styling */
-.login-container form {
-    display: flex;
-    flex-direction: column;
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
 }
 
-/* Label Styling */
-.login-container label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-/* Input Fields */
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.input-group input {
+    width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
-    width: 100%;
+    font-size: 14px;
+    transition: border-color 0.3s;
 }
 
-/* Focus effect */
-.login-container input[type="text"]:focus,
-.login-container input[type="password"]:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+.input-group input:focus {
+    border-color: #007bff;
     outline: none;
 }
 
-/* Submit Button */
-.login-container button[type="submit"] {
+/* ===== Submit Button Styling ===== */
+.submit-btn {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.submit-btn button {
+    width: 100%;
     padding: 12px;
-    background-color: #3498db;
-    color: white;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 6px;
     font-size: 16px;
@@ -84,25 +79,19 @@ body.loaded {
     transition: background-color 0.3s;
 }
 
-/* Hover effect for Submit button */
-.login-container button[type="submit"]:hover {
-    background-color: #2980b9;
+.submit-btn button:hover {
+    background-color: #0056b3;
 }
 
-/* Forgot Password Link */
-.login-container .forgot-password {
+/* ===== Error Message Styling ===== */
+.error-message {
+    color: red;
     text-align: center;
     margin-top: 15px;
+    font-size: 14px;
 }
 
-.login-container .forgot-password a {
-    color: #3498db;
-    text-decoration: none;
-}
 
-.login-container .forgot-password a:hover {
-    text-decoration: underline;
-}
 
 
  /* Index.html page */
