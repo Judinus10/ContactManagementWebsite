@@ -9,7 +9,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form id="loginForm">
+        <form th:action="@{/login}" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -21,10 +21,9 @@
             <div class="submit-btn">
                 <button type="submit">Login</button>
             </div>
-            <p class="error-message" id="errorMessage"></p>
+            <p class="error-message" th:text="${error}"></p>
         </form>
     </div>
-
     <script src="/js/script.js"></script>
 </body>
 </html>

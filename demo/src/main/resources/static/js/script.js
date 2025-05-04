@@ -4,6 +4,32 @@ window.addEventListener("load", () => {
 });
 
 
+// login.js
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Clear previous error message
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.textContent = "";
+
+    // Get form values
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // Simple validation for empty fields
+    if (username === "" || password === "") {
+        errorMessage.textContent = "Both fields are required!";
+    } else {
+        // If form is valid, you can send this data to the server
+        // Here, we just simulate a successful login for demonstration
+        alert("Login successful!");
+
+        // You could redirect to another page after successful login
+        window.location.href = "home.html"; // Example redirection
+    }
+});
+
+
 // console.log("Script Loaded!");
 //     // Function to show the toast message
 //     function showToast(message) {

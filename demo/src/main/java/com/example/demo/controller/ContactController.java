@@ -2,16 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Contact;
 import com.example.demo.repository.ContactRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -23,101 +20,147 @@ public class ContactController {
     // Display the login form
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login";  // Returns the login.html view
+        return "login";
     }
 
-    // Handle the login submission
+    // Process the login form
     @PostMapping("/login")
-    public String processLogin(String username, String password, Model model) {
-        // Simple validation (for demo purposes)
+    public String processLogin(@RequestParam String username,
+                               @RequestParam String password,
+                               HttpSession session,
+                               Model model) {
+        // Replace this with real authentication logic
         if ("user".equals(username) && "password".equals(password)) {
-            return "redirect:/index";  // Redirect to home page if login is successful
+            session.setAttribute("loggedIn", true);
+            return "redirect:/";
         } else {
             model.addAttribute("error", "Invalid username or password!");
-            return "login";  // Show the login page again with an error message
+            return "login";
         }
     }
 
+    // Logout and invalidate the session
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
+
+    // Home page - requires login
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
         List<Contact> contacts = contactRepository.findAll();
         model.addAttribute("contacts", contacts);
         return "index";
     }
 
     @GetMapping("/addContact")
-    public String showAddContactForm() {
-        return "addContact"; // Return the addContact.html page
+    public String showAddContactForm(HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+        return "addContact";
     }
 
-
     @PostMapping("/addContact")
-    public String addContact(@RequestParam String name, @RequestParam String phone, @RequestParam String email) {
+    public String addContact(@RequestParam String name,
+                             @RequestParam String phone,
+                             @RequestParam String email,
+                             HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
         Contact contact = new Contact();
         contact.setName(name);
         contact.setPhone(phone);
         contact.setEmail(email);
-
-        contactRepository.save(contact); // Save the new contact to the database
-
-        return "redirect:/"; // Redirect back to the home page after adding the contact
+        contactRepository.save(contact);
+        return "redirect:/";
     }
 
-
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+    public String showEditForm(@PathVariable Long id, Model model, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
+        Contact contact = contactRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         model.addAttribute("contact", contact);
-        return "editContact"; // The view where the edit form is shown
+        return "editContact";
     }
 
     @PostMapping("/updateContact")
     public String updateContact(@RequestParam Long id,
                                 @RequestParam String name,
                                 @RequestParam String phone,
-                                @RequestParam String email) {
+                                @RequestParam String email,
+                                HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
         Contact contact = contactRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Invalid contact ID"));
-
         contact.setName(name);
         contact.setPhone(phone);
         contact.setEmail(email);
         contactRepository.save(contact);
-
-        return "redirect:/"; // redirect to homepage or contact list
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteContact(@PathVariable Long id) {
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+    public String deleteContact(@PathVariable Long id, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
+        Contact contact = contactRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         contactRepository.delete(contact);
-        return "redirect:/"; // Redirect to home page after deletion
+        return "redirect:/";
     }
 
-
     @GetMapping("/confirmDelete/{id}")
-    public String confirmDelete(@PathVariable Long id, Model model) {
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+    public String confirmDelete(@PathVariable Long id, Model model, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
+        Contact contact = contactRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         model.addAttribute("contact", contact);
-        return "confirmDelete"; // The view where the user will confirm deletion
+        return "confirmDelete";
     }
 
     @GetMapping("/sort")
-public String viewHomePage(@RequestParam(required = false, defaultValue = "name") String sortField, Model model) {
-    List<Contact> contactList = contactRepository.findAll(Sort.by(sortField).ascending());
-    model.addAttribute("contacts", contactList);
-    model.addAttribute("sortField", sortField);
-    return "index"; // your main contact list page
-}
+    public String viewHomePage(@RequestParam(defaultValue = "name") String sortField,
+                               Model model, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
+
+        List<Contact> contactList = contactRepository.findAll(Sort.by(sortField).ascending());
+        model.addAttribute("contacts", contactList);
+        model.addAttribute("sortField", sortField);
+        return "index";
+    }
 
     @GetMapping("/search")
-public String searchContacts(@RequestParam("keyword") String keyword, Model model) {
-    List<Contact> results = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(
-        keyword, keyword, keyword);
-    model.addAttribute("contacts", results);
-    return "index";
-}
+    public String searchContacts(@RequestParam("keyword") String keyword,
+                                 Model model, HttpSession session) {
+        if (session.getAttribute("loggedIn") == null) {
+            return "redirect:/login";
+        }
 
-
-    
+        List<Contact> results = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(
+            keyword, keyword, keyword);
+        model.addAttribute("contacts", results);
+        return "index";
+    }
 }
