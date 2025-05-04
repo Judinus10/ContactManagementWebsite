@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form th:action="@{/login}" method="post" id="loginForm">
+        <form id="loginForm">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -21,8 +21,10 @@
             <div class="submit-btn">
                 <button type="submit">Login</button>
             </div>
-            <p class="error-message" th:text="${error}"></p>
+            <p class="error-message" id="errorMessage"></p>
         </form>
     </div>
+
+    <script src="/js/script.js"></script>
 </body>
 </html>

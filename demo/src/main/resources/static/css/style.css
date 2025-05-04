@@ -22,26 +22,17 @@ body.loaded {
 }
 
 /* login page */
-/* General body styling */
-/* body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-} */
 
 /* Login Container */
 .login-container {
-    background-color: white;
+    background-color: rgb(60, 59, 59);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    position: relative; /* or absolute/fixed */
+    z-index: 999;
 }
 
 /* Header */
@@ -114,7 +105,6 @@ body.loaded {
 .login-container .forgot-password a:hover {
     text-decoration: underline;
 }
-
 
 
  /* Index.html page */
