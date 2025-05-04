@@ -26,9 +26,9 @@ public class ContactController {
     // Process the login form
     @PostMapping("/login")
     public String processLogin(@RequestParam String username,
-                               @RequestParam String password,
-                               HttpSession session,
-                               Model model) {
+            @RequestParam String password,
+            HttpSession session,
+            Model model) {
         // Replace this with real authentication logic
         if ("user".equals(username) && "password".equals(password)) {
             session.setAttribute("loggedIn", true);
@@ -43,6 +43,38 @@ public class ContactController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
+        return "redirect:/login";
+    }
+
+    // Show registration page
+    @GetMapping("/register")
+    public String showRegisterPage() {
+        return "register";
+    }
+
+    // Process the registration form
+    @PostMapping("/register")
+    public String processRegistration(@RequestParam String username,
+            @RequestParam String password,
+            @RequestParam String confirmPassword,
+            Model model) {
+        // Simple validation for passwords matching
+        if (!password.equals(confirmPassword)) {
+            model.addAttribute("error", "Passwords do not match!");
+            return "register";
+        }
+
+        // Check if the username already exists (You can add more complex logic here)
+        if (userRepository.existsByUsername(username)) {
+            model.addAttribute("error", "Username already exists!");
+            return "register";
+        }
+
+        // Save the user to the database (Use your actual user entity and repository)
+        User newUser = new User(username, password);
+        userRepository.save(newUser);
+
+        // Redirect to login page after successful registration
         return "redirect:/login";
     }
 
@@ -68,9 +100,9 @@ public class ContactController {
 
     @PostMapping("/addContact")
     public String addContact(@RequestParam String name,
-                             @RequestParam String phone,
-                             @RequestParam String email,
-                             HttpSession session) {
+            @RequestParam String phone,
+            @RequestParam String email,
+            HttpSession session) {
         if (session.getAttribute("loggedIn") == null) {
             return "redirect:/login";
         }
@@ -90,23 +122,23 @@ public class ContactController {
         }
 
         Contact contact = contactRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         model.addAttribute("contact", contact);
         return "editContact";
     }
 
     @PostMapping("/updateContact")
     public String updateContact(@RequestParam Long id,
-                                @RequestParam String name,
-                                @RequestParam String phone,
-                                @RequestParam String email,
-                                HttpSession session) {
+            @RequestParam String name,
+            @RequestParam String phone,
+            @RequestParam String email,
+            HttpSession session) {
         if (session.getAttribute("loggedIn") == null) {
             return "redirect:/login";
         }
 
         Contact contact = contactRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid contact ID"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid contact ID"));
         contact.setName(name);
         contact.setPhone(phone);
         contact.setEmail(email);
@@ -121,7 +153,7 @@ public class ContactController {
         }
 
         Contact contact = contactRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         contactRepository.delete(contact);
         return "redirect:/";
     }
@@ -133,14 +165,14 @@ public class ContactController {
         }
 
         Contact contact = contactRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid contact id"));
         model.addAttribute("contact", contact);
         return "confirmDelete";
     }
 
     @GetMapping("/sort")
     public String viewHomePage(@RequestParam(defaultValue = "name") String sortField,
-                               Model model, HttpSession session) {
+            Model model, HttpSession session) {
         if (session.getAttribute("loggedIn") == null) {
             return "redirect:/login";
         }
@@ -153,13 +185,14 @@ public class ContactController {
 
     @GetMapping("/search")
     public String searchContacts(@RequestParam("keyword") String keyword,
-                                 Model model, HttpSession session) {
+            Model model, HttpSession session) {
         if (session.getAttribute("loggedIn") == null) {
             return "redirect:/login";
         }
 
-        List<Contact> results = contactRepository.findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(
-            keyword, keyword, keyword);
+        List<Contact> results = contactRepository
+                .findByNameContainingIgnoreCaseOrPhoneContainingIgnoreCaseOrEmailContainingIgnoreCase(
+                        keyword, keyword, keyword);
         model.addAttribute("contacts", results);
         return "index";
     }
