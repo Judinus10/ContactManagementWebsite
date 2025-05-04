@@ -83,6 +83,10 @@ body.loaded {
     background-color: #0056b3;
 }
 
+.login-container p{
+    text-align: center;
+    margin-top: 15px;
+}
 /* ===== Error Message Styling ===== */
 .error-message {
     color: red;
@@ -90,9 +94,6 @@ body.loaded {
     margin-top: 15px;
     font-size: 14px;
 }
-
-
-
 
  /* Index.html page */
 
