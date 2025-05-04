@@ -14,8 +14,6 @@ public class Contact {
     private String name;
     private String phone;
     private String email;
-    private String username;
-    private String password;
 
     
     // Getters and Setters
@@ -49,21 +47,5 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setUsername(Long id) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setPassword(String name) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return phone;
     }
 }
