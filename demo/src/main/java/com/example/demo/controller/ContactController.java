@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Contact;
+import com.example.demo.model.User;
 import com.example.demo.repository.ContactRepository;
 import com.example.demo.repository.UserRepository;
 
