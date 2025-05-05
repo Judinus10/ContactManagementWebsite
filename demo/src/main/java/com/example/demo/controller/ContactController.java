@@ -36,7 +36,7 @@ public class ContactController {
             Model model) {
 
          User user = userRepository.findByUsername(username);
-         
+
          if (user != null && user.getPassword().equals(password)) {
              session.setAttribute("loggedIn", true);
              session.setAttribute("username", user.getUsername());
@@ -86,6 +86,12 @@ public class ContactController {
         return "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // Ends the session
+        return "redirect:/login"; // Redirects to login page
+    }
+    
     // Home page - requires login
     @GetMapping("/")
     public String home(Model model, HttpSession session) {
