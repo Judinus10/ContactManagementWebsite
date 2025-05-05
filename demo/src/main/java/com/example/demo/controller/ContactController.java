@@ -34,14 +34,17 @@ public class ContactController {
             @RequestParam String password,
             HttpSession session,
             Model model) {
-        // Replace this with real authentication logic
-        if ("user".equals(username) && "password".equals(password)) {
-            session.setAttribute("loggedIn", true);
-            return "redirect:/";
-        } else {
-            model.addAttribute("error", "Invalid username or password!");
-            return "login";
-        }
+
+         User user = userRepository.findByUsername(username);
+         
+         if (user != null && user.getPassword().equals(password)) {
+             session.setAttribute("loggedIn", true);
+             session.setAttribute("username", user.getUsername());
+             return "redirect:/";
+         } else {
+             model.addAttribute("error", "Invalid username or password!");
+             return "login";
+         }
     }
 
     // Logout and invalidate the session
