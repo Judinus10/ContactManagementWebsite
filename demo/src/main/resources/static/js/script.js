@@ -1,3 +1,15 @@
+function showLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'block';
+}
+
+function closeLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'none';
+}
+
+function confirmLogout() {
+    window.location.href = "/logout";
+}
+
 //  Smooth transition for the entire page load
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
