@@ -18,6 +18,24 @@ body.loaded {
 
 /* login page */
 /* ===== Login Container Styling ===== */
+
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+}
+
+.logout-button a {
+    color: red;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.logout-button a:hover {
+    color: darkred;
+}
+
 .login-container {
     width: 350px;
     margin: 100px auto;
