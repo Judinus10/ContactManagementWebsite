@@ -83,7 +83,8 @@ body.loaded {
     background-color: #0056b3;
 }
 
-.login-container p{
+.login-container p,
+.register-container p{
     text-align: center;
     margin-top: 15px;
 }
@@ -162,7 +163,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
 
  /* Index.html page */
 
