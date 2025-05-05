@@ -125,7 +125,9 @@ contact-management/
 │       │   │   ├── addContact.html                            # Form for adding new contact
 │       │   │   ├── confirmDelete.html                         # Confirmation page for deleting a contact
 │       │   │   ├── editContact.html                           # Form for editing existing contact
-│       │   │   └── index.html                                 # Main page to display all contacts
+│       │   │   ├── index.html                                 # Main page to display all contacts
+                ├── login.html                                 # login page 
+│       │   │   └── register.html                              # register page 
 │       │   │
 │       │   └── application.properties                         # Spring Boot config
 │
